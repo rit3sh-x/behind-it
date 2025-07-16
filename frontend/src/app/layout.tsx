@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import QueryProvider from "@/providers/query-client";
+import { Toaster } from "@/components/ui/sonner";
 
 const manrope = Manrope({
   variable: "--font-geist-sans",
@@ -22,10 +24,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/svg+xml" href="/logo.svg" />
       </head>
-      <body
-        className={`${manrope.variable} antialiased`}
-      >
-        {children}
+      <body className={`${manrope.variable} antialiased`}>
+        <QueryProvider>
+          {children}
+          <Toaster />
+        </QueryProvider>
       </body>
     </html>
   );
